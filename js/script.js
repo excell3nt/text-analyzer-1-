@@ -2,7 +2,7 @@
 
 
 function wordCounter(text) {
-  if (text.trim().length === 0){
+  if (text.trim().length === 0) {
     return 0;
   }
   let wordCount = 0;
@@ -23,27 +23,12 @@ function numberOfOccurrencesInText(word, text) {
   const wordArray = text.split(" ");
   let wordCount = 0;
   wordArray.forEach(function (element) {
-    if ((word === punctuationRemover(element))  || (element.toLowerCase() === word.toLowerCase())) {
+    if ((word === punctuationRemover(element)) || (element.toLowerCase() === word.toLowerCase())) {
       wordCount++;
     }
   });
   return "There are " + wordCount + " total match(es)!";
 }
-
-
-//  function numberOfOccurrencesInText(word, text) {
-//     if ((text.trim().length === 0) || (word.trim().length === 0)) {
-//     return 0;
-//   }
-//   const wordArray = text.split(" ");
-//   let wordCount = 0;
-//   wordArray.forEach(function(element) {
-    // if (element.toLowerCase().includes(word.toLowerCase())) {
-//       wordCount++;
-//     }
-//   });
-//   return wordCount;
-// }
 
 let offensiveWords = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"]
 function offensiveWordFilter(offensiveWords, text) {
@@ -60,31 +45,19 @@ function offensiveWordFilter(offensiveWords, text) {
 }
 
 function punctuationRemover(word) {
-  let punctuations = [".", ",", "-", "?", "!","'",":",";"]
+  let punctuations = [".", ",", "-", "?", "!", "'", ":", ";"]
   punctuations.forEach(function (element) {
     word = word.replace(element, "")
   })
   return word;
 }
 
-
-// function boldPassage(word, text) {
-//   return "<p>" + text + "</p>";
-// }
-
-// function boldPassage(word, text) {
-//   if (word === text) {
-//     return "<p><b>" + text + "</b></p>";
-//   } else
-//   return "<p>" + text + "</p>";
-// }
-
 function boldPassage(word, text) {
   text = offensiveWordFilter(offensiveWords, text);
   let htmlString = "<p>";
   let textArray = text.split(" ");
   textArray.forEach(function (element) {
-    if ((word === punctuationRemover(element))  || (element.toLowerCase().includes(word.toLowerCase()))){
+    if ((word === punctuationRemover(element)) || (element.toLowerCase() === word.toLowerCase())) {
       htmlString = htmlString.concat("<b>" + element + "</b>");
     } else {
       htmlString = htmlString.concat(element);
@@ -93,12 +66,6 @@ function boldPassage(word, text) {
   });
   return htmlString + "</p>";
 }
-
-// function top3(sentences) {
-//   let top = []
-//   let topThree = "<p>"
-
-// }
 
 function top3(sentence) {
   let top = []
