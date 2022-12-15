@@ -92,7 +92,7 @@ function top3(sentence) {
 
   for (i = 0; i < top.length - 1; i++) {
 
-    if (i > 2) {
+    if (i > 2) 
 
       break;
     }
