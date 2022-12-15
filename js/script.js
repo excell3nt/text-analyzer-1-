@@ -67,39 +67,28 @@ function boldPassage(word, text) {
   return htmlString + "</p>";
 }
 
-function top3(sentence) {
+function top3(sentence){
   let top = []
-  let topThree = "<li>"
-  word = sentence.toLowerCase();
-  let myTop = word.split(" ");
-  let newMyTop = [...new Set(myTop)];
-  newMyTop.forEach(function (element) {
-    let counter = 0;
-    myTop.forEach(function (elements) {
-      if (element === elements) {
-        counter++
-      }
-    })
+  let topThree = ""
+  let myTop = sentence.split(" ")
+  let myNewTop = [...new Set(myTop)]
+  myNewTop.forEach(function(element){
+    let elementFreeOfPunctuation = punctuationRemover(element)
+    let counter = numberOfOccurrencesInText(elementFreeOfPunctuation, sentence)
     let wordCountArray = [];
-    wordCountArray.push(element);
+    wordCountArray.push(elementFreeOfPunctuation);
     wordCountArray.push(counter);
-    top.push(wordCountArray);
+    top.push(wordCountArray)
   });
-
-  top.sort(function (a, b) {
-    return b[1] - a[1]
+  top.sort(function(a,b){
+    return b[1] - a[1]  
   });
-
-  for (i = 0; i < top.length - 1; i++) {
-
-    if (i > 2) {
-
-      break;
+  for( let i =0; i<top.length; i++){
+    if (i <= 2){
+      topThree = topThree.concat("<li>", top[i][0] + ":" + top[i][1], "</li>") 
     }
-    topThree = topThree.concat(top[i][0] + ":" + top[i][1])
   }
-  topThree = topThree + "</li>"
-  return topThree;
+  return topThree
 }
 
 
@@ -113,7 +102,7 @@ $(document).ready(function () {
     const wordCount = wordCounter(passage);
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
     const boldedPassage = boldPassage(word, passage)
-    const top3Common = top3(word)
+    const top3Common = top3(passage)
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
     $("#bolded-passage").html(boldedPassage)
