@@ -133,14 +133,14 @@ function boldPassage(word, text) {
 
 function mostCommonWord(str){
   let stringArray = str.split(" ");
-  let result = "<p>";
+  let result = "<li>";
   
   stringArray.forEach(function(element){
 
     result += element.concat(":" + " " +  numberOfOccurrencesInText(element, str)) + "<br>"
     
   })
-  return result + "</p>"
+  return result + "</li>"
 };
 
 // UI LOGIC
