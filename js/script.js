@@ -14,6 +14,23 @@ function wordCounter(text) {
   });
   return wordCount;
 }
+
+
+function numberOfOccurrencesInText(word, text) {
+  if ((text.trim().length === 0) || (word.trim().length === 0)) {
+    return "You need to enter both a word and a text passage!";
+  }
+  const wordArray = text.split(" ");
+  let wordCount = 0;
+  wordArray.forEach(function (element) {
+    if (word === punctuationRemover(element))  {
+      wordCount++;
+    }
+  });
+  return "There are " + wordCount + " total match(es)!";
+}
+
+
 //  function numberOfOccurrencesInText(word, text) {
 //     if ((text.trim().length === 0) || (word.trim().length === 0)) {
 //     return 0;
@@ -50,19 +67,6 @@ function punctuationRemover(word) {
   return word;
 }
 
-function numberOfOccurrencesInText(word, text) {
-  if ((text.trim().length === 0) || (word.trim().length === 0)) {
-    return "You need to enter both a word and a text passage!";
-  }
-  const wordArray = text.split(" ");
-  let wordCount = 0;
-  wordArray.forEach(function (element) {
-    if (word === punctuationRemover(element)) {
-      wordCount++;
-    }
-  });
-  return "There are " + wordCount + " total match(es)!";
-}
 
 // function boldPassage(word, text) {
 //   return "<p>" + text + "</p>";
@@ -96,10 +100,10 @@ function boldPassage(word, text) {
 
 // }
 
-function top3(word) {
+function top3(sentence) {
   let top = []
   let topThree = "<li>"
-  word = word.toLowerCase();
+  word = sentence.toLowerCase();
   let myTop = word.split(" ");
   let newMyTop = [...new Set(myTop)];
   newMyTop.forEach(function (element) {
