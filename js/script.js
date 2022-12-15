@@ -23,7 +23,7 @@ function numberOfOccurrencesInText(word, text) {
   const wordArray = text.split(" ");
   let wordCount = 0;
   wordArray.forEach(function (element) {
-    if (word === punctuationRemover(element))  {
+    if ((word === punctuationRemover(element))  || (element.toLowerCase() === word.toLowerCase())) {
       wordCount++;
     }
   });
@@ -60,7 +60,7 @@ function offensiveWordFilter(offensiveWords, text) {
 }
 
 function punctuationRemover(word) {
-  let punctuations = [".", ",", "-", "?", "!"]
+  let punctuations = [".", ",", "-", "?", "!","'",":",";"]
   punctuations.forEach(function (element) {
     word = word.replace(element, "")
   })
@@ -84,7 +84,7 @@ function boldPassage(word, text) {
   let htmlString = "<p>";
   let textArray = text.split(" ");
   textArray.forEach(function (element) {
-    if (word === punctuationRemover(element)) {
+    if ((word === punctuationRemover(element))  || (element.toLowerCase().includes(word.toLowerCase()))){
       htmlString = htmlString.concat("<b>" + element + "</b>");
     } else {
       htmlString = htmlString.concat(element);
