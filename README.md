@@ -1,6 +1,6 @@
 # _Text Analyzer_
 
-#### _It is an Application that allows you to analyse a text by counting the number of  words and characters present._
+#### _This is an Application that allows you to analyse a text by counting the number of  words and characters present._
 
 #### By _**Adumekwe Excellent**_
 
